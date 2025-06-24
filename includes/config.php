@@ -1,4 +1,11 @@
+
 <?php
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
+$dotenv->load();
+
 // Get database credentials from environment variable
 $db_url = parse_url(getenv('DATABASE_URL'));
 
