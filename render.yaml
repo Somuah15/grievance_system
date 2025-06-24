@@ -2,7 +2,7 @@ services:
   - type: web
     name: grievance_system
     runtime: php
-    buildCommand: "./build.sh"
+    buildCommand: "composer install"
     startCommand: "php -S 0.0.0.0:10000"
     envVars:
       - key: DATABASE_URL
