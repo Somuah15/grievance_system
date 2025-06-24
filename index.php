@@ -256,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     <?php endif; ?>
                     
-                    <form action="login.php" method="POST">
+                    <form action="index.php" method="POST">
                         <!-- Email input with floating label -->
                         <div class="form-floating mb-4">
                             <div class="input-group">

@@ -259,6 +259,14 @@ body {
     background: linear-gradient(135deg, #4361ee, #3a0ca3);
 }
 
+.stat-card.new {
+    background: linear-gradient(135deg, #7209b7, #560bad);
+}
+
+.stat-card.in-progress {
+    background: linear-gradient(135deg, #f72585, #b5179e);
+}
+
 .stat-card.admins {
     background: linear-gradient(135deg, #7209b7, #560bad);
 }
