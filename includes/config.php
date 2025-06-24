@@ -1,28 +1,19 @@
-
 <?php
+session_start();
 
-require_once __DIR__ . '/../vendor/autoload.php';
+// Database configuration from environment variables
+define('DB_HOST', getenv('DB_HOST') ?: 'localhost');
+define('DB_USER', getenv('DB_USER'));
+define('DB_PASS', getenv('DB_PASS'));
+define('DB_NAME', getenv('DB_NAME'));
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
-
-// Get database credentials from environment variable
-$db_url = parse_url(getenv('DATABASE_URL'));
-
-define('DB_HOST', $db_url['host']);
-define('DB_USER', $db_url['user']);
-define('DB_PASS', $db_url['pass']);
-define('DB_NAME', ltrim($db_url['path'], '/'));
-
-
-// Email configuration
-define('SMTP_HOST', 'smtp.example.com');
-define('SMTP_PORT', 587);
-define('SMTP_USER', 'your_email@example.com');
-define('SMTP_PASS', 'your_email_password');
-define('FROM_EMAIL', 'noreply@yourdomain.com');
-define('FROM_NAME', 'ResolverIT System');
-
+// Email configuration from environment variables
+define('SMTP_HOST', getenv('SMTP_HOST'));
+define('SMTP_PORT', getenv('SMTP_PORT') ?: 587);
+define('SMTP_USER', getenv('SMTP_USER'));
+define('SMTP_PASS', getenv('SMTP_PASS'));
+define('FROM_EMAIL', getenv('FROM_EMAIL') ?: 'noreply@yourdomain.com');
+define('FROM_NAME', getenv('FROM_NAME') ?: 'ResolverIT System');
 
 // Create connection
 $conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
@@ -35,7 +26,7 @@ if ($conn->connect_error) {
 // Set charset
 $conn->set_charset("utf8mb4");
 
-// Error reporting (disable in production)
+// Error reporting - turn off in production
 error_reporting(E_ALL);
-ini_set('display_errors', '0'); // Set to '1' for debugging
+ini_set('display_errors', getenv('DISPLAY_ERRORS') ?: 0);
 ?>
