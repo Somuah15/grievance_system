@@ -462,7 +462,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="d-flex align-items-center mb-4">
                                     <img src="assets/images/user.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
-                                        <h5 class="mb-0">Priya S.</h5>
+                                        <h5 class="mb-0">Kojo Somuah</h5>
                                         <small class="text-muted">Employee</small>
                                     </div>
                                 </div>
@@ -474,7 +474,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="d-flex align-items-center mb-4">
                                     <img src="assets/images/reviewer.svg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
-                                        <h5 class="mb-0">Rahul M.</h5>
+                                        <h5 class="mb-0">Abigail Edem</h5>
                                         <small class="text-muted">Reviewer</small>
                                     </div>
                                 </div>
@@ -486,7 +486,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <div class="d-flex align-items-center mb-4">
                                     <img src="assets/images/admin.png" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
-                                        <h5 class="mb-0">Amit K.</h5>
+                                        <h5 class="mb-0">Aristocratjnr</h5>
                                         <small class="text-muted">Admin</small>
                                     </div>
                                 </div>
