@@ -219,9 +219,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 
                 <div class="login-body">
                     <?php if (isset($error)): ?>
-                        <div class="alert alert-danger alert-dismissible fade show">
-                            <?php echo $error; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        <div class="alert alert-danger alert-dismissible fade show animate__animated animate__shakeX mb-4" role="alert" style="font-size:1.1rem; font-weight:500;">
+                            <i class="fas fa-exclamation-triangle me-2"></i> <?php echo $error; ?>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
                     <?php endif; ?>
                     
