@@ -85,19 +85,14 @@ while ($row = $result->fetch_assoc()) {
         }
         
         .stat-card {
-            border-radius: 12px;
-            padding: 1.5rem;
+            border-radius: 16px;
+            padding: 2rem 1.5rem 1.5rem 1.5rem;
             color: white;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             border: none;
-        }
-        
-        .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: none;
         }
         
         .stat-card.users {
@@ -121,14 +116,14 @@ while ($row = $result->fetch_assoc()) {
         }
         
         .stat-value {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
         }
         
         .stat-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            opacity: 0.95;
             font-weight: 500;
         }
         
@@ -137,13 +132,14 @@ while ($row = $result->fetch_assoc()) {
             right: 1.5rem;
             top: 1.5rem;
             font-size: 3.5rem;
-            opacity: 0.2;
+            opacity: 0.18;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
         }
         
         .card {
             border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            border-radius: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
             margin-bottom: 1.5rem;
         }
         
@@ -152,7 +148,7 @@ while ($row = $result->fetch_assoc()) {
             border-bottom: 1px solid rgba(0,0,0,0.05);
             font-weight: 600;
             padding: 1.25rem 1.5rem;
-            border-radius: 12px 12px 0 0 !important;
+            border-radius: 16px 16px 0 0 !important;
         }
         
         .table {
@@ -192,23 +188,22 @@ while ($row = $result->fetch_assoc()) {
         }
         
         .quick-action-btn {
-            border-radius: 10px;
+            border-radius: 12px;
             padding: 1.5rem;
-            transition: all 0.3s;
+            transition: none;
             flex: 1;
             min-width: 250px;
             border: none;
             text-align: left;
-        }
-        
-        .quick-action-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #f8f9fa;
+            color: #212529;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.03);
         }
         
         .quick-action-btn i {
             font-size: 1.75rem;
             margin-bottom: 0.5rem;
+            color: var(--primary-color);
         }
         
         .quick-action-btn h6 {

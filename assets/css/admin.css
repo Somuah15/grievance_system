@@ -12,7 +12,6 @@
     --light: #f8f9fa;
     --gray: #6c757d;
     --gray-light: #e9ecef;
-    --gradient: linear-gradient(135deg, var(--primary), var(--primary-dark));
     --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     --shadow-md: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -30,7 +29,7 @@ body {
 
 /* Sidebar - Glass Morphism Style */
 .sidebar {
-    background: rgba(26, 26, 46, 0.9);
+    background: rgba(175, 192, 193, 0.9);
     backdrop-filter: blur(10px);
     color: white;
     height: 100vh;
@@ -39,7 +38,7 @@ body {
     transition: var(--transition);
     z-index: 1000;
     box-shadow: var(--shadow-md);
-    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: 1px solid rgba(217, 195, 195, 0.1);
 }
 
 .sidebar-header {
@@ -70,7 +69,6 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 50%;
-    background: var(--gradient);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -109,11 +107,6 @@ body {
     font-size: 1.1rem;
 }
 
-.nav-link:hover, .nav-link.active {
-    background: rgba(255, 255, 255, 0.1);
-    color: white;
-    transform: translateX(5px);
-}
 
 .nav-link.active {
     background: var(--primary);
@@ -138,10 +131,7 @@ body {
     background: white;
 }
 
-.card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-5px);
-}
+
 
 .card-header {
     background: white;
@@ -169,10 +159,7 @@ body {
     border: none;
 }
 
-.btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-md);
-}
+
 
 /* Tables */
 .table {
@@ -188,9 +175,7 @@ body {
     color: var(--gray);
 }
 
-.table-hover tbody tr:hover {
-    background-color: rgba(67, 97, 238, 0.05);
-}
+
 
 /* Badges */
 .badge {
