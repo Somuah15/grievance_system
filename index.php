@@ -472,7 +472,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li class="splide__slide">
                             <div class="testimonial-card">
                                 <div class="d-flex align-items-center mb-4">
-                                    <img src="assets/images/testimonial2.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
+                                    <img src="assets/images/reviewer.svg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Rahul M.</h5>
                                         <small class="text-muted">Reviewer</small>
@@ -484,7 +484,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li class="splide__slide">
                             <div class="testimonial-card">
                                 <div class="d-flex align-items-center mb-4">
-                                    <img src="assets/images/testimonial3.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
+                                    <img src="assets/images/admin.png" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Amit K.</h5>
                                         <small class="text-muted">Admin</small>
