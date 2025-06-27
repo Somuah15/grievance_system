@@ -582,12 +582,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <!-- CTA Section -->
-    <section class="py-5 bg-gradient-primary text-white">
+    <section class="py-5 cta-section" style="background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%); color: #fff;">
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="display-5 fw-bold mb-4">Ready to Speak Up Safely?</h2>
-                    <p class="lead mb-5">Join thousands of employees who have found their voice through ResolverIT</p>
+                    <h2 class="display-5 fw-bold mb-4" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Ready to Speak Up Safely?</h2>
+                    <p class="lead mb-5" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Join thousands of employees who have found their voice through ResolverIT</p>
                     <div class="d-flex justify-content-center gap-3">
                         <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#loginModal">
                             Submit Grievance
