@@ -340,7 +340,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeIn">
-                    <img src="assets/images/policy.png" alt="Hero Illustration" class="img-fluid floating" style="animation-delay: 0.5s;">
+                    <img src="assets/images/grieve.png" alt="Hero Illustration" class="img-fluid floating" style="animation-delay: 0.5s;">
                 </div>
             </div>
         </div>
@@ -655,7 +655,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
                     <a href="#" class="d-flex align-items-center mb-3 text-decoration-none">
-                        <img src="assets/images/logo-white.png" alt="ResolverIT Logo" height="40" class="me-2">
+                        <img src="assets/images/logo.png" alt="ResolverIT Logo" height="40" class="me-2">
                         <span class="fs-4 fw-bold">ResolverIT</span>
                     </a>
                     <p class="text-muted">The anonymous grievance resolution platform that protects your identity while ensuring your voice is heard.</p>
