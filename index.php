@@ -309,9 +309,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <button class="btn btn-outline-primary me-2" onclick="window.location.href='signup.php'">
-                            <i class="fas fa-user-plus me-2"></i>Sign Up
-                        </button>
                         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
                             <i class="fas fa-sign-in-alt me-2"></i>Login
                         </button>
@@ -592,9 +589,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#loginModal">
                             Submit Grievance
                         </button>
-                        <a href="signup.php" class="btn btn-outline-light btn-lg px-4">
-                            Create Account
-                        </a>
                     </div>
                 </div>
             </div>
@@ -639,10 +633,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
                             <span class="submit-text">Login</span>
                             <span class="spinner-border spinner-border-sm d-none submit-spinner" role="status" aria-hidden="true"></span>
-                        </button>
-                        <div class="text-center">
-                            <p class="mb-0">Don't have an account? <a href="signup.php" class="text-primary">Sign up</a></p>
-                        </div>
+                    </button>
                     </form>
                 </div>
             </div>
