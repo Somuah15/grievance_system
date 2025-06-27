@@ -483,12 +483,57 @@ while ($row = $result->fetch_assoc()) {
             elements.forEach((el, index) => {
                 el.style.animationDelay = `${index * 0.1}s`;
             });
-            
-            // Initialize charts if needed
-            // Example:
-            // const ctx = document.getElementById('statsChart').getContext('2d');
-            // new Chart(ctx, { ... });
         });
+
+        // Real-time notification polling
+        function updateNotifications() {
+            fetch('notifications_api.php')
+                .then(res => res.json())
+                .then(data => {
+                    if (data.notification_count !== undefined) {
+                        // Update notification badge
+                        const badge = document.querySelector('.notification-badge');
+                        badge.textContent = data.notification_count;
+                        badge.style.display = data.notification_count > 0 ? 'flex' : 'none';
+                    }
+                    if (data.activities) {
+                        // Update recent activity feed
+                        const feed = document.querySelector('.activity-feed');
+                        if (feed) {
+                            feed.innerHTML = '';
+                            data.activities.forEach(act => {
+                                let icon = 'bi-info-circle';
+                                let color = 'primary';
+                                let msg = '';
+                                if (act.status === 'resolved') {
+                                    icon = 'bi-check-circle'; color = 'success';
+                                    msg = `Complaint #${act.id} resolved`;
+                                } else if (act.status === 'assigned' || act.status === 'in_progress') {
+                                    icon = 'bi-list-task'; color = 'info';
+                                    msg = `Complaint #${act.id} assigned to ${act.reviewer_name || 'reviewer'}`;
+                                } else {
+                                    icon = 'bi-exclamation-triangle'; color = 'warning';
+                                    msg = `New complaint: ${act.title}`;
+                                }
+                                feed.innerHTML += `
+                                <div class="d-flex mb-3">
+                                    <div class="avatar bg-${color} bg-opacity-10 text-${color} rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px;">
+                                        <i class="bi ${icon}"></i>
+                                    </div>
+                                    <div>
+                                        <small class="d-block text-muted">${new Date(act.created_at).toLocaleString([], {dateStyle:'medium', timeStyle:'short'})}</small>
+                                        <p class="mb-0">${msg}</p>
+                                    </div>
+                                </div>`;
+                            });
+                        }
+                    }
+                });
+        }
+        // Poll every 10 seconds
+        setInterval(updateNotifications, 10000);
+        // Initial call
+        updateNotifications();
     </script>
 </body>
 </html>
