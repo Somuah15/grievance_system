@@ -52,11 +52,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ResolverIT - Anonymous Grievance System</title>
+    <title>ResolverIT</title>
     
     <!-- Modern Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link rel="icon" type="image/png" href="assets/images/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Modern CSS Libraries -->
@@ -200,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 60px;
             height: 60px;
             border-radius: 12px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            background: linear-gradient(100deg, var(--primary) 0%, var(--primary-light) 2%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -292,7 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand font-bold" href="#">
                 <img src="assets/images/logo.png" alt="ResolverIT Logo" class="floating">
                 ResolverIT
             </a>
@@ -311,9 +312,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <a class="nav-link" href="#about">About</a>
                     </li>
                     <li class="nav-item ms-2">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a class="btn btn-primary" href="login.php">
                             <i class="fas fa-sign-in-alt me-2"></i>Login
-                        </button>
+                            </a>
                     </li>
                 </ul>
             </div>
@@ -447,9 +448,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5 bg-dark">
-        <div class="container py-5">
-            <div class="text-center mb-5">
+    <section id="testimonials" class="py-4 bg-dark">
+        <div class="container py-2">
+            <div class="text-center mb-2">
                 <h2 class="section-title animate__animated animate__fadeIn text-white"><i class="bi bi-people-fill me-2"></i>Trusted by Thousands</h2>
                 <p class="section-subtitle text-light animate__animated animate__fadeIn animate__delay-1s">
                     What our users say about ResolverIT
@@ -502,7 +503,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <!-- Stats Section -->
-    <section class="py-5 bg-primary text-white">
+    <section class="py-5 text-white" style="background: linear-gradient(90deg, #6366f1 0%, #4f46e5 100%); color: #fff;">
         <div class="container py-4">
             <div class="row text-center">
                 <div class="col-md-3 mb-4 mb-md-0">
@@ -594,9 +595,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </h2>
                     <p class="lead mb-5" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Join thousands of employees who have found their voice through ResolverIT</p>
                     <div class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#loginModal">
+                        <a class="btn btn-light btn-lg px-4" href="login.php">
                             Submit Grievance
-                        </button>
+    </a>
                     </div>
                 </div>
             </div>
@@ -649,7 +650,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </div>
 
     <!-- Footer -->
-    <footer class="py-5 bg-dark text-white">
+    <footer class="py-5 text-white">
         <div class="container py-4">
             <div class="row">
                 <div class="col-lg-4 mb-4 mb-lg-0">
@@ -659,29 +660,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </a>
                     <p class="text-muted">The anonymous grievance resolution platform that protects your identity while ensuring your voice is heard.</p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-twitter-x"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
-                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-3">Company</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">About</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Careers</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Blog</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Press</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
-                    <h5 class="mb-3">Product</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Features</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Pricing</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">Security</a></li>
-                        <li class="mb-2"><a href="#" class="text-muted text-decoration-none">FAQ</a></li>
-                    </ul>
                 </div>
                 <div class="col-lg-4">
                     <h5 class="mb-3">Subscribe to our newsletter</h5>

@@ -34,6 +34,8 @@ $unread_notifications = 0;
 $result = $conn->query("SELECT COUNT(*) as count FROM notifications 
                         WHERE user_id = {$_SESSION['user_id']} AND is_read = 0");
 $unread_notifications = $result->fetch_assoc()['count'];
+
+// If this file ever handles login directly, add similar send_mail logic as in login.php after successful authentication.
 ?>
 
 <!DOCTYPE html>
@@ -42,6 +44,7 @@ $unread_notifications = $result->fetch_assoc()['count'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard - ResolverIT</title>
+     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
