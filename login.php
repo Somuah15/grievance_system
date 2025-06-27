@@ -163,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="login-wrapper shadow-lg">
         <div class="login-illustration d-none d-md-flex flex-column align-items-center justify-content-center">
-            <img src="assets/images/hero-illustration.svg" alt="Login Illustration">
+            <img src="assets/images/logo.png" alt="Login Illustration">
             <h2>Welcome to ResolverIT</h2>
             <p>Anonymous. Secure. Empowering your voice.<br>Login to access your dashboard and track your grievances.</p>
         </div>

@@ -507,19 +507,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container py-4">
             <div class="row text-center">
                 <div class="col-md-3 mb-4 mb-md-0">
-                    <h2 class="display-4 fw-bold">10K+</h2>
+                    <h2 class="display-4 fw-bold stat-count" data-count="10000">0</h2>
                     <p class="mb-0">Grievances Resolved</p>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
-                    <h2 class="display-4 fw-bold">100%</h2>
+                    <h2 class="display-4 fw-bold stat-count" data-count="100">0</h2>
                     <p class="mb-0">Anonymous</p>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
-                    <h2 class="display-4 fw-bold">24/7</h2>
+                    <h2 class="display-4 fw-bold stat-count" data-count="24">0</h2>
                     <p class="mb-0">Support</p>
                 </div>
                 <div class="col-md-3">
-                    <h2 class="display-4 fw-bold">4.9★</h2>
+                    <h2 class="display-4 fw-bold stat-count" data-count="4.9">0</h2>
                     <p class="mb-0">User Rating</p>
                 </div>
             </div>
@@ -717,7 +717,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
-    
     <script>
         // Initialize Splide slider for testimonials
         new Splide('.splide', {
@@ -786,6 +785,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         window.addEventListener('scroll', animateOnScroll);
         // Trigger once on page load
         animateOnScroll();
+        
+        // Animated stats counter
+        function animateCount(el, target, duration) {
+            let start = 0;
+            let startTime = null;
+            const isFloat = String(target).includes('.');
+            function step(timestamp) {
+                if (!startTime) startTime = timestamp;
+                const progress = Math.min((timestamp - startTime) / duration, 1);
+                const value = isFloat ? (progress * target).toFixed(1) : Math.floor(progress * target);
+                el.textContent = isFloat ? value + '★' : value + (target == 100 ? '%' : (target == 24 ? '/7' : '+'));
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    el.textContent = isFloat ? target + '★' : target + (target == 100 ? '%' : (target == 24 ? '/7' : '+'));
+                }
+            }
+            requestAnimationFrame(step);
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.stat-count').forEach(function(el) {
+                const target = parseFloat(el.getAttribute('data-count'));
+                animateCount(el, target, 1800);
+            });
+        });
     </script>
 </body>
 </html>
