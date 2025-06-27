@@ -28,7 +28,6 @@ if (!isset($_GET['confirm'])) {
                 padding: 2.5rem 2rem 2rem 2rem;
                 background: #fff;
                 border-radius: 1rem;
-                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
                 text-align: center;
                 border: 1px solid #e2e8f0;
             }
@@ -51,7 +50,7 @@ if (!isset($_GET['confirm'])) {
             }
             .btn-secondary:hover {
                 background: #e5e7eb;
-                color: #111827;
+                color:rgb(76, 88, 115);
             }
         </style>
     </head>
