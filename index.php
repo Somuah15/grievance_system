@@ -445,10 +445,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-5 bg-dark text-white">
+    <section id="testimonials" class="py-5 bg-dark">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="section-title animate__animated animate__fadeIn">Trusted by Thousands</h2>
+                <h2 class="section-title animate__animated animate__fadeIn text-white">Trusted by Thousands</h2>
                 <p class="section-subtitle text-light animate__animated animate__fadeIn animate__delay-1s">
                     What our users say about ResolverIT
                 </p>
@@ -460,7 +460,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <li class="splide__slide">
                             <div class="testimonial-card">
                                 <div class="d-flex align-items-center mb-4">
-                                    <img src="assets/images/testimonial1.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
+                                    <img src="assets/images/user.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Priya S.</h5>
                                         <small class="text-muted">Employee</small>
