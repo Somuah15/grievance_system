@@ -396,7 +396,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container py-5">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-5 mb-lg-0">
-                    <img src="assets/images/about-illustration.svg" alt="About Illustration" class="img-fluid animate__animated animate__fadeInLeft">
+                    <img src="assets/images/virtual.svg" alt="About Illustration" class="img-fluid animate__animated animate__fadeInLeft">
                 </div>
                 <div class="col-lg-6">
                     <h2 class="section-title text-start animate__animated animate__fadeInRight">Why Choose ResolverIT</h2>
