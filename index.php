@@ -160,7 +160,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             right: 0;
             bottom: 0;
             left: 0;
-            background: url('assets/images/abstract-bg.svg') no-repeat center right;
+            background: url('assets/images/grievance.png') no-repeat center right;
             background-size: contain;
             opacity: 0.1;
         }
@@ -340,7 +340,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                 </div>
                 <div class="col-lg-6 d-none d-lg-block animate__animated animate__fadeIn">
-                    <img src="assets/images/hero-illustration.svg" alt="Hero Illustration" class="img-fluid floating" style="animation-delay: 0.5s;">
+                    <img src="assets/images/policy.png" alt="Hero Illustration" class="img-fluid floating" style="animation-delay: 0.5s;">
                 </div>
             </div>
         </div>
@@ -634,7 +634,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <input class="form-check-input" type="checkbox" id="remember">
                                 <label class="form-check-label" for="remember">Remember me</label>
                             </div>
-                            <a href="#" class="text-primary">Forgot password?</a>
+                            <a href="forget-password.php" class="text-primary">Forgot password?</a>
                         </div>
                         <button type="submit" class="btn btn-primary w-100 py-2 mb-3">
                             <span class="submit-text">Login</span>
