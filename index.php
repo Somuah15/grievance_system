@@ -64,6 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     
     <!-- Custom CSS -->
     <style>
@@ -357,7 +359,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-md-4 animate__animated animate__fadeInUp">
                     <div class="feature-card">
                         <div class="feature-icon">
-                            <i class="fas fa-user-secret"></i>
+                            <i class="bi bi-incognito"></i>
                         </div>
                         <h3 class="feature-title">Submit Anonymously</h3>
                         <p class="feature-desc text-muted">
@@ -368,7 +370,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-1s">
                     <div class="feature-card">
                         <div class="feature-icon bg-gradient-danger">
-                            <i class="fas fa-search"></i>
+                            <i class="bi bi-search"></i>
                         </div>
                         <h3 class="feature-title">Professional Review</h3>
                         <p class="feature-desc text-muted">
@@ -379,7 +381,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="col-md-4 animate__animated animate__fadeInUp animate__delay-2s">
                     <div class="feature-card">
                         <div class="feature-icon bg-gradient-success">
-                            <i class="fas fa-chart-line"></i>
+                            <i class="bi bi-graph-up-arrow"></i>
                         </div>
                         <h3 class="feature-title">Track Progress</h3>
                         <p class="feature-desc text-muted">
@@ -408,7 +410,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-flex mb-4 animate__animated animate__fadeInRight animate__delay-1s">
                             <div class="me-4">
                                 <div class="feature-icon" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-shield-alt"></i>
+                                    <i class="bi bi-shield-lock"></i>
                                 </div>
                             </div>
                             <div>
@@ -419,7 +421,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-flex mb-4 animate__animated animate__fadeInRight animate__delay-2s">
                             <div class="me-4">
                                 <div class="feature-icon" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-clock"></i>
+                                    <i class="bi bi-clock-history"></i>
                                 </div>
                             </div>
                             <div>
@@ -430,7 +432,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="d-flex animate__animated animate__fadeInRight animate__delay-3s">
                             <div class="me-4">
                                 <div class="feature-icon" style="width: 50px; height: 50px;">
-                                    <i class="fas fa-bell"></i>
+                                    <i class="bi bi-bell-fill"></i>
                                 </div>
                             </div>
                             <div>
@@ -448,7 +450,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <section id="testimonials" class="py-5 bg-dark">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="section-title animate__animated animate__fadeIn text-white">Trusted by Thousands</h2>
+                <h2 class="section-title animate__animated animate__fadeIn text-white"><i class="bi bi-people-fill me-2"></i>Trusted by Thousands</h2>
                 <p class="section-subtitle text-light animate__animated animate__fadeIn animate__delay-1s">
                     What our users say about ResolverIT
                 </p>
@@ -463,7 +465,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <img src="assets/images/user.jpg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Kojo Somuah</h5>
-                                        <small class="text-muted">Employee</small>
+                                        <small class="text-muted"><i class="bi bi-person-badge me-1"></i>Employee</small>
                                     </div>
                                 </div>
                                 <p class="mb-0">"ResolverIT made it easy to raise my concern without fear. The process was smooth and I got updates at every step!"</p>
@@ -475,7 +477,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <img src="assets/images/reviewer.svg" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Abigail Edem</h5>
-                                        <small class="text-muted">Reviewer</small>
+                                        <small class="text-muted"><i class="bi bi-person-check me-1"></i>Reviewer</small>
                                     </div>
                                 </div>
                                 <p class="mb-0">"The dashboard is intuitive and helps me resolve complaints efficiently. Highly recommended!"</p>
@@ -487,7 +489,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                     <img src="assets/images/admin.png" alt="User" class="rounded-circle me-3" width="60" height="60">
                                     <div>
                                         <h5 class="mb-0">Aristocratjnr</h5>
-                                        <small class="text-muted">Admin</small>
+                                        <small class="text-muted"><i class="bi bi-person-gear me-1"></i>Admin</small>
                                     </div>
                                 </div>
                                 <p class="mb-0">"ResolverIT ensures transparency and accountability in our organization. The best grievance system we've used."</p>
@@ -504,18 +506,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container py-4">
             <div class="row text-center">
                 <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="mb-2"><i class="bi bi-check-circle-fill display-6"></i></div>
                     <h2 class="display-4 fw-bold stat-count" data-count="10000">0</h2>
                     <p class="mb-0">Grievances Resolved</p>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="mb-2"><i class="bi bi-shield-lock-fill display-6"></i></div>
                     <h2 class="display-4 fw-bold stat-count" data-count="100">0</h2>
                     <p class="mb-0">Anonymous</p>
                 </div>
                 <div class="col-md-3 mb-4 mb-md-0">
+                    <div class="mb-2"><i class="bi bi-clock-history display-6"></i></div>
                     <h2 class="display-4 fw-bold stat-count" data-count="24">0</h2>
                     <p class="mb-0">Support</p>
                 </div>
                 <div class="col-md-3">
+                    <div class="mb-2"><i class="bi bi-star-fill display-6"></i></div>
                     <h2 class="display-4 fw-bold stat-count" data-count="4.9">0</h2>
                     <p class="mb-0">User Rating</p>
                 </div>
@@ -527,7 +533,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <section id="faq" class="py-5 bg-light">
         <div class="container py-5">
             <div class="text-center mb-5">
-                <h2 class="section-title">Frequently Asked Questions</h2>
+                <h2 class="section-title"><i class="bi bi-question-circle-fill me-2"></i>Frequently Asked Questions</h2>
                 <p class="section-subtitle text-muted">
                     Everything you need to know about ResolverIT
                 </p>
@@ -539,7 +545,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="accordion-item border-0 mb-3">
                             <h2 class="accordion-header" id="headingOne">
                                 <button class="accordion-button shadow-none rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Is my identity really anonymous?
+                                    <i class="bi bi-shield-lock-fill me-2 text-primary"></i>Is my identity really anonymous?
                                 </button>
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
@@ -551,7 +557,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="accordion-item border-0 mb-3">
                             <h2 class="accordion-header" id="headingTwo">
                                 <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    How do I track my complaint?
+                                    <i class="bi bi-graph-up-arrow me-2 text-success"></i>How do I track my complaint?
                                 </button>
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
@@ -563,7 +569,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         <div class="accordion-item border-0 mb-3">
                             <h2 class="accordion-header" id="headingThree">
                                 <button class="accordion-button shadow-none rounded-3 collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Can I submit a complaint without creating an account?
+                                    <i class="bi bi-person-fill-lock me-2 text-warning"></i>Can I submit a complaint without creating an account?
                                 </button>
                             </h2>
                             <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
@@ -583,7 +589,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="container py-5">
             <div class="row justify-content-center">
                 <div class="col-lg-8 text-center">
-                    <h2 class="display-5 fw-bold mb-4" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Ready to Speak Up Safely?</h2>
+                    <h2 class="display-5 fw-bold mb-4" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">
+                        <i class="bi bi-megaphone-fill me-2"></i>Ready to Speak Up Safely?
+                    </h2>
                     <p class="lead mb-5" style="color: #fff; text-shadow: 0 2px 8px rgba(0,0,0,0.18);">Join thousands of employees who have found their voice through ResolverIT</p>
                     <div class="d-flex justify-content-center gap-3">
                         <button class="btn btn-light btn-lg px-4" data-bs-toggle="modal" data-bs-target="#loginModal">
@@ -651,10 +659,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </a>
                     <p class="text-muted">The anonymous grievance resolution platform that protects your identity while ensuring your voice is heard.</p>
                     <div class="d-flex gap-3">
-                        <a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-twitter-x"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-white"><i class="bi bi-instagram"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4 mb-md-0">
@@ -691,9 +699,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none">Privacy Policy</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none">Terms of Service</a></li>
-                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none">Contact Us</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none"><i class="bi bi-shield-check me-1"></i>Privacy Policy</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none"><i class="bi bi-file-earmark-text me-1"></i>Terms of Service</a></li>
+                        <li class="list-inline-item"><a href="#" class="text-muted text-decoration-none"><i class="bi bi-envelope-at me-1"></i>Contact Us</a></li>
                     </ul>
                 </div>
             </div>
