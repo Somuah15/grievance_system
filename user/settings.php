@@ -55,6 +55,15 @@ if (isset($_POST['change_email'])) {
         $error = "Error changing email: " . $conn->error;
     }
 }
+
+// Handle preferences save
+if (isset($_POST['save_preferences'])) {
+    $_SESSION['email_notifications'] = isset($_POST['email_notifications']) ? 1 : 0;
+    $_SESSION['inapp_notifications'] = isset($_POST['inapp_notifications']) ? 1 : 0;
+    $_SESSION['message'] = "Preferences saved.";
+    header("Location: settings.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +77,7 @@ if (isset($_POST['change_email'])) {
     <link href="../../assets/css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 <body>
     <?php include 'sidebar.php'; ?>
@@ -87,50 +96,64 @@ if (isset($_POST['change_email'])) {
         <div class="row">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0">Change Password</h5>
+                    <div class="card-header bg-white border-bottom-0">
+                        <h5 class="mb-0"><i class="bi bi-key me-2"></i>Change Password</h5>
                     </div>
                     <div class="card-body">
                         <form method="POST">
                             <div class="mb-3">
-                                <label for="current_password" class="form-label">Current Password</label>
+                                <label for="current_password" class="form-label"><i class="bi bi-lock me-1"></i>Current Password</label>
                                 <input type="password" class="form-control" id="current_password" name="current_password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="new_password" class="form-label">New Password</label>
+                                <label for="new_password" class="form-label"><i class="bi bi-shield-lock me-1"></i>New Password</label>
                                 <input type="password" class="form-control" id="new_password" name="new_password" required>
                             </div>
                             <div class="mb-3">
-                                <label for="confirm_password" class="form-label">Confirm New Password</label>
+                                <label for="confirm_password" class="form-label"><i class="bi bi-shield-check me-1"></i>Confirm New Password</label>
                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
                             </div>
-                            <button type="submit" name="change_password" class="btn btn-primary">Change Password</button>
+                            <button type="submit" name="change_password" class="btn btn-primary w-100"><i class="bi bi-arrow-repeat me-1"></i>Change Password</button>
                         </form>
                     </div>
                 </div>
-            </div>    
-        </div>
-        
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">System Preferences</h5>
-            </div>
-            <div class="card-body">
-                <form>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Notifications</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="emailNotifications" checked>
-                            <label class="form-check-label" for="emailNotifications">Email Notifications</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" id="inAppNotifications" checked>
-                            <label class="form-check-label" for="inAppNotifications">In-App Notifications</label>
-                        </div>
+                <div class="card mb-4">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h5 class="mb-0"><i class="bi bi-envelope-at me-2"></i>Change Email</h5>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save Preferences</button>
-                </form>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label for="new_email" class="form-label"><i class="bi bi-envelope me-1"></i>New Email</label>
+                                <input type="email" class="form-control" id="new_email" name="new_email" required>
+                            </div>
+                            <button type="submit" name="change_email" class="btn btn-primary w-100"><i class="bi bi-send me-1"></i>Change Email</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header bg-white border-bottom-0">
+                        <h5 class="mb-0"><i class="bi bi-gear me-2"></i>System Preferences</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="POST">
+                            <div class="mb-3">
+                                <label class="form-label">Notifications</label>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="emailNotifications" name="email_notifications" value="1" <?php if(isset($_SESSION['email_notifications']) && $_SESSION['email_notifications']) echo 'checked'; ?>>
+                                    <label class="form-check-label" for="emailNotifications"><i class="bi bi-envelope-fill me-1"></i>Email Notifications</label>
+                                </div>
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="inAppNotifications" name="inapp_notifications" value="1" <?php if(isset($_SESSION['inapp_notifications']) && $_SESSION['inapp_notifications']) echo 'checked'; ?>>
+                                    <label class="form-check-label" for="inAppNotifications"><i class="bi bi-bell-fill me-1"></i>In-App Notifications</label>
+                                </div>
+                            </div>
+                            <button type="submit" name="save_preferences" class="btn btn-primary w-100"><i class="bi bi-save me-1"></i>Save Preferences</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
