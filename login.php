@@ -19,15 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['email'] = $user['email'];
             $_SESSION['role'] = $user['role'];
             $_SESSION['name'] = $user['name'];
-
-            // Send login notification email
-            require_once 'includes/mailer.php';
-            $loginTime = date('Y-m-d H:i:s');
-            $ip = $_SERVER['REMOTE_ADDR'] ?? 'Unknown';
-            $subject = 'Login Notification - ResolverIT';
-            $body = "<p>Hello <b>{$user['name']}</b>,</p><p>Your account was just logged in at <b>{$loginTime}</b> from IP: <b>{$ip}</b>.<br>If this wasn't you, please reset your password immediately.</p><p>ResolverIT Team</p>";
-            send_mail($user['email'], $subject, $body);
-
             // Redirect based on role
             switch ($user['role']) {
                 case 'admin':
@@ -55,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - ResolverIT</title>
-     <link rel="icon" type="image/png" href="/assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
