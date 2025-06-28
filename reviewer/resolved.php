@@ -5,7 +5,95 @@ include '../includes/functions.php';
 
 require_role('reviewer');
 
-// [Previous PHP code remains exactly the same until the HTML starts]
+// Handle resolving complaints
+if (isset($_GET['resolve'])) {
+    $complaint_id = intval($_GET['resolve']);
+    
+    $stmt = $conn->prepare("UPDATE complaints SET status = 'resolved', resolved_at = NOW() WHERE id = ? AND assigned_to = ?");
+    $stmt->bind_param("ii", $complaint_id, $_SESSION['user_id']);
+    $stmt->execute();
+    
+    // Send notification to admin
+    send_notification(1, "Reviewer {$_SESSION['name']} has resolved complaint #$complaint_id", "admin/complaints.php?action=view&id=$complaint_id");
+
+    // Fetch complaint, user, and admin info for email
+    $complaint_stmt = $conn->prepare("SELECT title, user_id FROM complaints WHERE id = ?");
+    $complaint_stmt->bind_param("i", $complaint_id);
+    $complaint_stmt->execute();
+    $complaint_result = $complaint_stmt->get_result();
+    if ($complaint = $complaint_result->fetch_assoc()) {
+        // Get user email
+        $user_stmt = $conn->prepare("SELECT email, name FROM users WHERE id = ?");
+        $user_stmt->bind_param("i", $complaint['user_id']);
+        $user_stmt->execute();
+        $user_result = $user_stmt->get_result();
+        if ($user = $user_result->fetch_assoc()) {
+            $user_subject = "Your complaint has been resolved";
+            $user_body = "<p>Dear {$user['name']},</p><p>Your complaint '<strong>{$complaint['title']}</strong>' (ID: $complaint_id) has been marked as resolved by the reviewer.</p>";
+            send_email_notification($user['email'], $user_subject, $user_body);
+        }
+        // Get admin email
+        $admin_stmt = $conn->prepare("SELECT email, name FROM users WHERE role = 'admin' LIMIT 1");
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+        if ($admin = $admin_result->fetch_assoc()) {
+            $admin_subject = "A complaint has been resolved";
+            $admin_body = "<p>Reviewer <strong>{$_SESSION['name']}</strong> has resolved complaint '<strong>{$complaint['title']}</strong>' (ID: $complaint_id).</p>";
+            send_email_notification($admin['email'], $admin_subject, $admin_body);
+        }
+    }
+    
+    $_SESSION['message'] = "Complaint marked as resolved";
+    header("Location: resolved.php");
+    exit();
+}
+
+// Handle undoing resolution (within 6 hours)
+if (isset($_GET['undo'])) {
+    $complaint_id = intval($_GET['undo']);
+    
+    // Check if it's within 6 hours
+    $stmt = $conn->prepare("SELECT resolved_at FROM complaints WHERE id = ? AND assigned_to = ?");
+    $stmt->bind_param("ii", $complaint_id, $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows == 1) {
+        $complaint = $result->fetch_assoc();
+        $resolved_time = strtotime($complaint['resolved_at']);
+        $current_time = time();
+        
+        if (($current_time - $resolved_time) <= 21600) { // 6 hours in seconds
+            $stmt = $conn->prepare("UPDATE complaints SET status = 'in_progress', resolved_at = NULL WHERE id = ?");
+            $stmt->bind_param("i", $complaint_id);
+            $stmt->execute();
+            
+            // Send notification to admin
+            send_notification(1, "Reviewer {$_SESSION['name']} has undone resolution for complaint #$complaint_id", "admin/complaints.php?action=view&id=$complaint_id");
+            
+            $_SESSION['message'] = "Resolution undone successfully";
+        } else {
+            $_SESSION['error'] = "Cannot undo resolution after 6 hours";
+        }
+    }
+    
+    header("Location: resolved.php");
+    exit();
+}
+
+// Get resolved complaints
+$complaints = [];
+$stmt = $conn->prepare("SELECT c.id, c.title, c.priority, c.resolved_at 
+                        FROM complaints c 
+                        WHERE c.assigned_to = ? AND c.status = 'resolved'
+                        ORDER BY c.resolved_at DESC");
+$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $complaints[] = $row;
+}
 ?>
 
 <!DOCTYPE html>
