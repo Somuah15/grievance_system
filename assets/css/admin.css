@@ -30,7 +30,7 @@ body {
 /* Sidebar - Glass Morphism Style */
 .sidebar {
     background: #fff;
-    color: #222b45;
+    color: #1e2433;
     height: 100vh;
     position: fixed;
     width: 270px;
@@ -51,9 +51,9 @@ body {
 }
 
 .sidebar-brand {
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.35rem;
-    color: #3a0ca3;
+    color: #140a2a;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -90,12 +90,12 @@ body {
     margin-top: 1rem;
     font-weight: 600;
     font-size: 1.1rem;
-    color: #3a0ca3;
+    color: #231a37;
 }
 
 .user-role {
     font-size: 0.92rem;
-    color: #888;
+    color: #291d1d;
     font-weight: 500;
 }
 
