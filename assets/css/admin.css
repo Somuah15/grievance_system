@@ -29,23 +29,22 @@ body {
 
 /* Sidebar - Glass Morphism Style */
 .sidebar {
-    background: linear-gradient(135deg, #3a0ca3 0%, #4361ee 100%);
-    backdrop-filter: blur(12px);
-    color: #fff;
+    background: #fff;
+    color: #222b45;
     height: 100vh;
     position: fixed;
     width: 270px;
     transition: var(--transition);
     z-index: 1000;
     box-shadow: var(--shadow-md);
-    border-right: 1px solid rgba(255,255,255,0.08);
+    border-right: 1px solid #e0e7ef;
     display: flex;
     flex-direction: column;
 }
 
 .sidebar-header {
     padding: 2rem 1.5rem 1rem 1.5rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid #e0e7ef;
     display: flex;
     align-items: center;
     gap: 1rem;
@@ -54,7 +53,7 @@ body {
 .sidebar-brand {
     font-weight: 700;
     font-size: 1.35rem;
-    color: #fff;
+    color: #3a0ca3;
     display: flex;
     align-items: center;
     gap: 0.75rem;
@@ -68,7 +67,7 @@ body {
 .user-profile {
     text-align: center;
     padding: 1.5rem 1rem 1rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid #e0e7ef;
 }
 
 .user-avatar {
@@ -83,19 +82,20 @@ body {
     font-size: 2.2rem;
     font-weight: 700;
     box-shadow: var(--shadow);
-    background: linear-gradient(135deg, #4895ef 0%, #7209b7 100%);
-    border: 3px solid #fff2;
+    background: #4895ef;
+    border: 3px solid #e0e7ef;
 }
 
 .user-name {
     margin-top: 1rem;
     font-weight: 600;
     font-size: 1.1rem;
+    color: #3a0ca3;
 }
 
 .user-role {
     font-size: 0.92rem;
-    color: #c7bfff;
+    color: #888;
     font-weight: 500;
 }
 
@@ -106,9 +106,10 @@ body {
 }
 
 .nav-link {
-    color: #e0e7ef;
+    color: #3a0ca3;
+    background: transparent;
     padding: 0.7rem 1.7rem;
-    margin: 0.18rem 1rem;
+    margin: 0.5rem 1rem;
     border-radius: 0.6rem;
     transition: var(--transition);
     display: flex;
@@ -124,28 +125,28 @@ body {
     text-align: center;
     margin-right: 0.7rem;
     font-size: 1.18rem;
-    color: #a5b4fc;
+    color: #888;
     transition: color 0.2s;
 }
 
 .nav-link.active, .nav-link:hover {
-    background: linear-gradient(90deg, #4895ef 0%, #7209b7 100%);
-    color: #fff;
-    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.18);
+    background: #f3f4f6;
+    color: #222b45;
+    box-shadow: 0 2px 8px rgba(60,72,100,0.07);
 }
 
 .nav-link.active i, .nav-link:hover i {
-    color: #fff;
+    color: #3a0ca3;
 }
 
 .sidebar-footer {
-    background: rgba(26, 26, 46, 0.93);
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: #f8f9fa;
+    border-top: 1px solid #e0e7ef;
     padding: 1.1rem 1.5rem;
     margin-top: auto;
     text-align: center;
     font-size: 0.98rem;
-    color: #bdbdbd;
+    color: #888;
 }
 
 .sidebar-footer .nav-link {
@@ -155,8 +156,8 @@ body {
 }
 
 .sidebar-footer .nav-link:hover {
-    background: rgba(255,255,255,0.07);
-    color: #fff;
+    background: #e0e7ef;
+    color: #3a0ca3;
 }
 
 /* Main Content Area */
