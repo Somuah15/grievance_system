@@ -49,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -165,33 +166,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <div class="login-wrapper shadow-lg">
         <div class="login-illustration d-none d-md-flex flex-column align-items-center justify-content-center">
             <img src="assets/images/logo.png" alt="Login Illustration">
-            <h2>Welcome to ResolverIT</h2>
-            <p>Anonymous. Secure. Empowering your voice.<br>Login to access your dashboard and track your grievances.</p>
+            <h3>Welcome to ResolverIT</h3>
+            <p>Login to access your dashboard and track your grievances.</p>
         </div>
         <div class="login-form-section">
-            <h3 class="mb-4">Sign In</h3>
+            <h3 class="mb-4"><i class="bi bi-person-circle me-2"></i>Sign In</h3>
             <?php if (isset($error)): ?>
                 <div class="alert alert-danger alert-dismissible fade show animate__animated animate__shakeX mb-4" role="alert">
-                    <i class="fas fa-exclamation-triangle me-2"></i> <?php echo $error; ?>
+                    <i class="bi bi-exclamation-triangle-fill me-2"></i> <?php echo $error; ?>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
             <form action="login.php" method="POST" autocomplete="off">
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email Address</label>
+                    <label for="email" class="form-label"><i class="bi bi-envelope-at me-1"></i>Email Address</label>
                     <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email" required>
                 </div>
                 <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
+                    <label for="password" class="form-label"><i class="bi bi-lock-fill me-1"></i>Password</label>
                     <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
                 </div>
                 <div class="d-grid mb-3">
-                    <button type="submit" class="btn btn-login">Sign In</button>
+                    <button type="submit" class="btn btn-login"><i class="bi bi-box-arrow-in-right me-2"></i>Sign In</button>
                 </div>
             </form>
             <div class="login-links">
-                <a href="forget-password.php">Forgot password?</a>
-                <a href="signup.php">Create account</a>
+                <a href="forget-password.php"><i class="bi bi-question-circle me-1"></i>Forgot password?</a>
+                <a href="signup.php"><i class="bi bi-person-plus me-1"></i>Create account</a>
             </div>
         </div>
     </div>
