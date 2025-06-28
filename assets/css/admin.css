@@ -155,10 +155,6 @@ body {
     font-size: 1rem;
 }
 
-.sidebar-footer .nav-link:hover {
-    background: #e0e7ef;
-    color: #3a0ca3;
-}
 
 /* Main Content Area */
 .main-content {
@@ -199,10 +195,16 @@ body {
     font-weight: 500;
     transition: var(--transition);
     box-shadow: var(--shadow-sm);
+    background-color: #4361ee;
+}
+.btn:hover {
+    background-color: #3a0ca3;
+    box-shadow: var(--shadow-md);
+    color: white;
 }
 
 .btn-primary {
-    background: var(--gradient);
+    background-color: #3a0ca3;
     border: none;
 }
 
@@ -282,10 +284,6 @@ body {
     pointer-events: none;
 }
 
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
 
 .stat-card.users {
     background: linear-gradient(135deg, #4361ee, #3a0ca3);

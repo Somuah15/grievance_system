@@ -20,10 +20,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_complaint'])) {
     
     if ($stmt->execute()) {
         $complaint_id = $stmt->insert_id;
-        
         // Send notification to admin
         send_notification(1, "New complaint submitted: $title", "admin/complaints.php?action=view&id=$complaint_id");
-        
+
+        // Optionally: update notification count for real-time dashboard (AJAX clients will poll notifications_api.php)
+        // You can trigger a websocket or push event here if using such tech.
+
+        // Send email to user
+        require_once '../includes/mailer.php';
+        $user_email = $_SESSION['email'];
+        $user_name = $_SESSION['name'];
+        $user_subject = "Your complaint has been received - ResolverIT";
+        $user_body = "<p>Dear $user_name,</p><p>Your complaint titled '<strong>" . htmlspecialchars($title) . "</strong>' has been successfully submitted. Our team will review and address it as soon as possible.</p><p>Thank you for using ResolverIT.</p>";
+        send_mail($user_email, $user_subject, $user_body);
+
+        // Send email to admin
+        $admin_email = getenv('ADMIN_EMAIL') ?: 'admin@yourdomain.com';
+        $admin_subject = "New Complaint Submitted - ResolverIT";
+        $admin_body = "<p>A new complaint has been submitted by <strong>$user_name</strong> (Email: $user_email).</p><p><strong>Title:</strong> " . htmlspecialchars($title) . "<br><strong>Priority:</strong> " . htmlspecialchars($priority) . "<br><strong>Description:</strong> " . nl2br(htmlspecialchars($description)) . "</p><p><a href='http://" . $_SERVER['HTTP_HOST'] . "/admin/complaints.php?action=view&id=$complaint_id'>View Complaint</a></p>";
+        send_mail($admin_email, $admin_subject, $admin_body);
+
+        // Optionally: set a flag or session variable if you want to trigger a frontend update
+        $_SESSION['notification_updated'] = true;
+
         $_SESSION['message'] = "Complaint submitted successfully";
         header("Location: complaints.php");
         exit();

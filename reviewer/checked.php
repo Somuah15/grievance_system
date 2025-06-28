@@ -29,6 +29,33 @@ if (isset($_GET['start'])) {
     
     // Send notification to admin
     send_notification(1, "Reviewer {$_SESSION['name']} has started working on complaint #$complaint_id", "admin/complaints.php?action=view&id=$complaint_id");
+
+    // Fetch complaint, user, and admin info for email
+    $complaint_stmt = $conn->prepare("SELECT title, user_id FROM complaints WHERE id = ?");
+    $complaint_stmt->bind_param("i", $complaint_id);
+    $complaint_stmt->execute();
+    $complaint_result = $complaint_stmt->get_result();
+    if ($complaint = $complaint_result->fetch_assoc()) {
+        // Get user email
+        $user_stmt = $conn->prepare("SELECT email, name FROM users WHERE id = ?");
+        $user_stmt->bind_param("i", $complaint['user_id']);
+        $user_stmt->execute();
+        $user_result = $user_stmt->get_result();
+        if ($user = $user_result->fetch_assoc()) {
+            $user_subject = "Your complaint is now being worked on";
+            $user_body = "<p>Dear {$user['name']},</p><p>Your complaint '<strong>{$complaint['title']}</strong>' (ID: $complaint_id) is now being worked on by a reviewer.</p>";
+            send_email_notification($user['email'], $user_subject, $user_body);
+        }
+        // Get admin email
+        $admin_stmt = $conn->prepare("SELECT email, name FROM users WHERE role = 'admin' LIMIT 1");
+        $admin_stmt->execute();
+        $admin_result = $admin_stmt->get_result();
+        if ($admin = $admin_result->fetch_assoc()) {
+            $admin_subject = "A reviewer has started working on a complaint";
+            $admin_body = "<p>Reviewer <strong>{$_SESSION['name']}</strong> has started working on complaint '<strong>{$complaint['title']}</strong>' (ID: $complaint_id).</p>";
+            send_email_notification($admin['email'], $admin_subject, $admin_body);
+        }
+    }
     
     $_SESSION['message'] = "Complaint marked as in progress";
     header("Location: checked.php");
