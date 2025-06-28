@@ -51,6 +51,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit_complaint'])) {
     }
 }
 
+// Handle delete complaint
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete_complaint_id'])) {
+    $delete_id = intval($_POST['delete_complaint_id']);
+    // Ensure the complaint belongs to the logged-in user
+    $stmt = $conn->prepare("DELETE FROM complaints WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $delete_id, $_SESSION['user_id']);
+    if ($stmt->execute() && $stmt->affected_rows > 0) {
+        $_SESSION['message'] = "Complaint deleted successfully.";
+    } else {
+        $error = "Failed to delete complaint or unauthorized action.";
+    }
+    header("Location: complaints.php");
+    exit();
+}
+
 // Get all complaints by this user
 $complaints = [];
 $result = $conn->query("SELECT id, title, priority, status, created_at 
@@ -68,6 +83,7 @@ while ($row = $result->fetch_assoc()) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Complaints - ResolverIT</title>
+     <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../assets/css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -150,6 +166,9 @@ while ($row = $result->fetch_assoc()) {
                                     <td><?php echo date('M d, Y', strtotime($complaint['created_at'])); ?></td>
                                     <td>
                                         <a href="view_complaint.php?id=<?php echo $complaint['id']; ?>" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i> View</a>
+                                        <button type="button" class="btn btn-sm btn-danger ms-1" data-bs-toggle="modal" data-bs-target="#deleteModal" data-id="<?php echo $complaint['id']; ?>" data-title="<?php echo htmlspecialchars($complaint['title'], ENT_QUOTES); ?>">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
@@ -197,6 +216,40 @@ while ($row = $result->fetch_assoc()) {
         </div>
     </div>
 
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="POST">
+            <div class="modal-header">
+              <h5 class="modal-title" id="deleteModalLabel"><i class="bi bi-trash me-1 text-danger"></i>Delete Complaint</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <input type="hidden" name="delete_complaint_id" id="delete_complaint_id">
+              <p>Are you sure you want to delete this complaint?</p>
+              <div class="alert alert-warning mb-0"><i class="bi bi-exclamation-triangle me-1"></i> <span id="deleteComplaintTitle"></span></div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> Cancel</button>
+              <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i> Delete</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    // Pass complaint id and title to modal
+    var deleteModal = document.getElementById('deleteModal');
+    deleteModal.addEventListener('show.bs.modal', function (event) {
+      var button = event.relatedTarget;
+      var complaintId = button.getAttribute('data-id');
+      var complaintTitle = button.getAttribute('data-title');
+      document.getElementById('delete_complaint_id').value = complaintId;
+      document.getElementById('deleteComplaintTitle').textContent = complaintTitle;
+    });
+    </script>
 </body>
 </html>
