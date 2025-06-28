@@ -39,7 +39,9 @@ while ($row = $result->fetch_assoc()) {
     <div class="main-content">   
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Your Notifications</h2>
+        <button class="btn btn-primary" id="refreshNotifications"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
     </div>
+        <div id="notifications-list">
         <?php if (empty($notifications)): ?>
             <div class="alert alert-info">You have no notifications.</div>
         <?php else: ?>
@@ -54,6 +56,52 @@ while ($row = $result->fetch_assoc()) {
                 <?php endforeach; ?>
             </div>
         <?php endif; ?>
+        </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+    document.getElementById('refreshNotifications').addEventListener('click', function() {
+        fetch('notifications.php?ajax=1')
+            .then(res => res.text())
+            .then(html => {
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, 'text/html');
+                const newList = doc.getElementById('notifications-list');
+                document.getElementById('notifications-list').innerHTML = newList.innerHTML;
+            });
+    });
+    </script>
 </body>
 </html>
+
+<?php
+// AJAX handler for notifications refresh
+if (isset($_GET['ajax']) && $_GET['ajax'] == 1) {
+    // Re-run the notifications query
+    $notifications = [];
+    $stmt = $conn->prepare("SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC");
+    $stmt->bind_param("i", $_SESSION['user_id']);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $notifications[] = $row;
+    }
+    ?>
+    <?php if (empty($notifications)): ?>
+        <div class="alert alert-info">You have no notifications.</div>
+    <?php else: ?>
+        <div class="list-group">
+            <?php foreach ($notifications as $notification): ?>
+            <a href="<?php echo $notification['link'] ?? '#'; ?>" class="list-group-item list-group-item-action">
+                <div class="d-flex w-100 justify-content-between">
+                    <p class="mb-1"><?php echo htmlspecialchars($notification['message']); ?></p>
+                    <small><?php echo date('M d, Y H:i', strtotime($notification['created_at'])); ?></small>
+                </div>
+            </a>
+            <?php endforeach; ?>
+        </div>
+    <?php endif; ?>
+    <?php
+    exit();
+}
+?>
