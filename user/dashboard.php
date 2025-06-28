@@ -183,5 +183,33 @@ $unread_notifications = $result->fetch_assoc()['count'];
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+// Real-time notification count update
+function updateNotificationCount() {
+    fetch('notifications_api.php?action=count')
+        .then(response => response.json())
+        .then(data => {
+            const badge = document.querySelector('.notification-badge');
+            if (data.count > 0) {
+                if (badge) {
+                    badge.textContent = data.count;
+                    badge.style.display = '';
+                } else {
+                    // If badge doesn't exist, create it
+                    const bellBtn = document.querySelector('.btn.btn-primary.position-relative.me-3');
+                    if (bellBtn) {
+                        const newBadge = document.createElement('span');
+                        newBadge.className = 'notification-badge badge bg-danger rounded-pill';
+                        newBadge.textContent = data.count;
+                        bellBtn.appendChild(newBadge);
+                    }
+                }
+            } else if (badge) {
+                badge.style.display = 'none';
+            }
+        });
+}
+setInterval(updateNotificationCount, 5000); // Poll every 5 seconds
+</script>
 </body>
 </html>
